@@ -3,9 +3,8 @@ import genanki
 import cv2
 from detectLastMove import detect_circles
 
-
 my_model = genanki.Model(
-    34567057,
+    345670,
     'Test Model',
     fields=[
 
@@ -19,19 +18,31 @@ my_model = genanki.Model(
             'afmt': '{{ImageFront}}<hr id="answer"><br>{{ImageBack}}',  # hr id="answer" -> auto jump to answer
         },
     ],
-    css="""
-        img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-        """
+      css = """
+           .card {
+              font-family: arial;
+              font-size: 20px;
+              text-align: center;
+              color: black;
+              background-color: white;
+            }
+          """
+    # Original CSS that was likely distorting the images
+
+    # css="""
+    #     img {
+    #         max-width: 100%;
+    #         max-height: 100%;
+    #     }
+    #     """
 )
 
 my_deck = genanki.Deck(
-    346897489,
-    'Eric 2-23-2023 6 cut puzzles')  # this is the name of the deck that you see on Anki
+    34689744,
+    'Eric situation puzzles css test')  # this is the name of the deck that you see on Anki
 
-path_to_folder = r"C:\Users\nharw\Desktop\Extra folder of puzzles"
+#path_to_folder = r"C:\Users\nharw\Desktop\Extra folder of puzzles"
+path_to_folder = r"C:\Users\nharw\Desktop\Screenshot Project\Stored Screenshots"
 
 if os.path.exists(os.path.join(path_to_folder, 'desktop.ini')):
     os.remove(os.path.join(path_to_folder, 'desktop.ini'))
@@ -81,4 +92,4 @@ if front_image is not None and len(back_images) > 0:
         fields=[f'<img src="{front_image}"/>', back_image_tags])
     my_deck.add_note(my_note)
 
-my_package.write_to_file(r'C:\Users\nharw\PycharmProjects\images2Anki\anki_output\final_deck.apkg')
+my_package.write_to_file(r'C:\Users\nharw\PycharmProjects\images2Anki\anki_output\3-7-23_deck.apkg')
