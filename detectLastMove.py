@@ -1,5 +1,4 @@
 import cv2
-
 def detect_circles(img):
 
     # Convert the image to grayscale, houghcircles method requires this
@@ -20,16 +19,4 @@ def detect_circles(img):
     circles = cv2.HoughCircles(gray_blur, cv2.HOUGH_GRADIENT, dp, minDist,
                                param1=param1, param2=param2, minRadius=minRadius, maxRadius=maxRadius)
 
-    if circles is None:
-        # print("False")
-        return False
-    else:
-        # print("True")
-        return True
-
-
-# remember to read the image first (for other modules when I export it)
-# img = cv2.imread(r"C:\Users\nharw\Desktop\Extra folder of puzzles\Eric 11 2023-02-22.png")
-# detect_circles(img)
-
-
+    return circles is not None
