@@ -39,7 +39,7 @@ my_model = genanki.Model(
 
 my_deck = genanki.Deck(
     34689744,
-    'Eric situation puzzles css test')  # this is the name of the deck that you see on Anki
+    'Eric situation image2anki puzzles')  # this is the name of the deck that you see on Anki
 
 #path_to_folder = r"C:\Users\nharw\Desktop\Extra folder of puzzles"
 path_to_folder = r"C:\Users\nharw\Desktop\Screenshot Project\Stored Screenshots"
@@ -92,4 +92,4 @@ if front_image is not None and len(back_images) > 0:
         fields=[f'<img src="{front_image}"/>', back_image_tags])
     my_deck.add_note(my_note)
 
-my_package.write_to_file(r'C:\Users\nharw\PycharmProjects\images2Anki\anki_output\3-7-23_deck.apkg')
+my_package.write_to_file(r'C:\Users\nharw\PycharmProjects\images2Anki\anki_output\4-25-23-deck.apkg')
