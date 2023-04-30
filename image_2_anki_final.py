@@ -41,9 +41,12 @@ my_deck = genanki.Deck(
     34689744,
     'Eric situation image2anki puzzles')  # this is the name of the deck that you see on Anki
 
-#path_to_folder = r"C:\Users\nharw\Desktop\Extra folder of puzzles"
-path_to_folder = r"C:\Users\nharw\Desktop\Screenshot Project\Stored Screenshots"
 
+# Specify the path to the folder where the images of the Go board positions are
+path_to_folder = r"C:\Users\nharw\Desktop\Screenshot Project\Stored Screenshots"
+#path_to_folder = r"C:\Users\nharw\Desktop\Extra folder of puzzles"
+
+# The desktop.ini hidden file could mess up the numbering on the puzzles, which shouldn't matter, but just in case
 if os.path.exists(os.path.join(path_to_folder, 'desktop.ini')):
     os.remove(os.path.join(path_to_folder, 'desktop.ini'))
     print("desktop.ini removed")
@@ -64,6 +67,9 @@ for image in sorted_images:
 
     final_image = cv2.imread(full_file_path)
 
+    # if a hollow circle is detected, that means it goes on the front of the anki card, and subsequence images
+    # go on the back of the same card until it finds another hollow circle, repeat the process until there are
+    # no images left in the folder
     if detect_circles(final_image):
         print("Add image to front of card", full_file_path)
 
@@ -92,4 +98,5 @@ if front_image is not None and len(back_images) > 0:
         fields=[f'<img src="{front_image}"/>', back_image_tags])
     my_deck.add_note(my_note)
 
+# Change the following path to the location you want your anki deck to be saved to!
 my_package.write_to_file(r'C:\Users\nharw\PycharmProjects\images2Anki\anki_output\4-25-23-deck.apkg')
